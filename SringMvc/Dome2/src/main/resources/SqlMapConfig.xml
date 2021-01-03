@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <!--&lt;!&ndash;懒加载&ndash;&gt;-->
+    <!--<settings>-->
+    <!--<setting name="lazyLoadingEnabled" value="true"/>-->
+    <!--<setting name="aggressiveLazyLoading" value="false"/>-->
+    <!--</settings>-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--使用jdbc做事务控制-->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--使用的是注解-->
+    <mappers>
+        <!--该包下所有dao接口都可以使用-->
+        <package name="com.mapper"/>
+    </mappers>
+</configuration>
